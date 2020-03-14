@@ -19,7 +19,6 @@ expand = true
 stretch_mode = 2
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="UserInterface" parent="InterfaceLayer" instance=ExtResource( 2 )]
 

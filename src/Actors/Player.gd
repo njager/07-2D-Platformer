@@ -6,6 +6,8 @@ export var stomp_impulse: = 600.0
 
 func _on_StompDetector_area_entered(area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
+	$EDeathSound.playing = true
+	$EDeathParticle.emitting = true
 
 
 func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
@@ -20,6 +22,8 @@ func _physics_process(delta: float) -> void:
 	_velocity = move_and_slide_with_snap(
 		_velocity, snap, FLOOR_NORMAL, true
 	)
+	if Input.is_action_just_pressed("jump"):
+		$JumpSound.playing = true
 
 
 func get_direction() -> Vector2:
@@ -44,9 +48,17 @@ func calculate_move_velocity(
 	return velocity
 
 
+
 func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) -> Vector2:
 	var stomp_jump: = -speed.y if Input.is_action_pressed("jump") else -stomp_impulse
 	return Vector2(linear_velocity.x, stomp_jump)
+
+
+func _jumpsound():
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		$JumpSound.playing = true
+	else:
+		pass
 
 
 func die() -> void:

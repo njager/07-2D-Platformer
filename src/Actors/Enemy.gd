@@ -2,9 +2,10 @@ extends Actor
 
 
 onready var stomp_area: Area2D = $StompArea2D
+onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 export var score: = 100
-
+	
 
 func _ready() -> void:
 	set_physics_process(true)
@@ -21,8 +22,11 @@ func _on_StompArea2D_area_entered(area: Area2D) -> void:
 	if area.global_position.y > stomp_area.global_position.y:
 		return
 	die()
+	
 
 
 func die() -> void:
+	$EDie.playing = true
 	PlayerData.score += score
 	queue_free()
+	

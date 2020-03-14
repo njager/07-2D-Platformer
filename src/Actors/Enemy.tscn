@@ -1,10 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Actors/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://assets/enemy.png" type="Texture" id=2]
+[ext_resource path="res://assets/jumperpack_kenney/PNG/Enemies/spikeBall1.png" type="Texture" id=2]
+[ext_resource path="res://assets/boop.wav" type="AudioStream" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=1]
 polygon = PoolVector2Array( -0.0765228, 46.5714, -22.833, 46.189, -38.1315, 42.7468, -47.8843, 35.48, -52.8564, 27.0658, -54.5774, 18.2692, -54.0037, 5.07425, -48.6493, -13.0927, -35.8368, -32.0246, -20.9207, -43.116, -7.53454, -47.5144, 0.114708, -47.8968, 10.25, -46.9407, 21.5326, -42.3511, 32.624, -34.1282, 44.8628, -20.5507, 52.8945, -2.00131, 54.6156, 11.3849, 54.8069, 19.2254, 52.7033, 27.4483, 46.0102, 37.5836, 35.6837, 43.3205, 22.2975, 46.3802 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Spin"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 40, 34 )
@@ -12,21 +30,37 @@ extents = Vector2( 40, 34 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 40, 10.5328 )
 
+[sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.2
+emission_shape = 1
+emission_sphere_radius = 10.0
+flag_disable_z = true
+gravity = Vector3( 0, 80, 0 )
+initial_velocity = 50.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 45.0
+scale = 6.0
+scale_random = 0.8
+color = Color( 0.788235, 0.788235, 0.788235, 1 )
+
 [node name="Enemy" type="KinematicBody2D"]
-position = Vector2( -4, 3 )
+position = Vector2( -4.36124, 1.55504 )
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -44.9277 )
+position = Vector2( 0.541848, -41.156 )
+scale = Vector2( 0.615864, 0.575246 )
 texture = ExtResource( 2 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite"]
 occluder = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "Spin"
+anims/Spin = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -34 )
@@ -41,8 +75,25 @@ position = Vector2( 0, -4.93669 )
 shape = SubResource( 3 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-position = Vector2( 0, -33 )
+position = Vector2( 0.361233, -33 )
+scale = Vector2( 0.725457, 1 )
 rect = Rect2( -50, -33, 100, 66 )
 process_parent = true
 physics_process_parent = true
+
+[node name="EGuts" type="Particles2D" parent="."]
+visible = false
+rotation = -1.5708
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.8
+process_material = SubResource( 6 )
+
+[node name="EDie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 6.523
+attenuation = 0.287175
 [connection signal="area_entered" from="StompArea2D" to="." method="_on_StompArea2D_area_entered"]
