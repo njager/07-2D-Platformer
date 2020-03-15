@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Actor",
 "language": "GDScript",
 "path": "res://src/Actors/Actor.gd"
+}, {
+"base": "Resource",
+"class": "SaveGame",
+"language": "GDScript",
+"path": "res://src/save/SaveGame.gd"
 } ]
 _global_script_class_icons={
-"Actor": ""
+"Actor": "",
+"SaveGame": ""
 }
 
 [application]
@@ -23,6 +29,7 @@ _global_script_class_icons={
 config/name="2D Platformer"
 run/main_scene="res://src/Screens/MainScreen.tscn"
 config/icon="res://assets/icon.png"
+config/Version="0.1.0"
 
 [autoload]
 

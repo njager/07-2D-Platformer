@@ -2,6 +2,8 @@ extends Area2D
 
 
 onready var anim_player: AnimationPlayer = $AnimationPlayer
+onready var is_picked: bool
+onready var SAVE_KEY : String = name
 
 export var score: = 100
 
@@ -15,3 +17,10 @@ func picked() -> void:
 	anim_player.play("picked")
 	$CoinDust.emitting = true
 	$CoinGet.playing = true
+	is_picked = false
+
+func save(save_game : Resource):
+	save_game.data[SAVE_KEY] = is_picked
+
+func load(save_game : Resource):
+	 is_picked = save_game.data[SAVE_KEY]

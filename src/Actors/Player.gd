@@ -1,7 +1,8 @@
 extends Actor
 
 export var stomp_impulse: = 600.0
-onready var anim_player = $Body/AnimationPlayer
+onready var anim_player: AnimationPlayer = $Body/Anima
+onready var SAVE_KEY : String = name
 
 func _on_StompDetector_area_entered(area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
@@ -28,9 +29,7 @@ func _physics_process(delta: float) -> void:
 	var move_direction = -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
 	if move_direction != 0:
 		$Body.scale.x = move_direction
-	
 	_assign_animation()
-	
 
 
 func get_direction() -> Vector2:
@@ -68,9 +67,7 @@ func _assign_animation():
 	#set animation plays
 	var anim = "idle"
 	
-	if not is_on_floor():
-		anim = "jump"
-	elif _velocity.x != 0:
+	if _velocity.x != 0:
 		anim = "run"
 		
 	if anim_player.assigned_animation != anim:
@@ -79,3 +76,9 @@ func _assign_animation():
 func die() -> void:
 	PlayerData.deaths += 1
 	queue_free()
+
+func save(save_game : Resource):
+	save_game.data[SAVE_KEY] = position
+
+func load(save_game : Resource):
+	position = save_game.data[SAVE_KEY]

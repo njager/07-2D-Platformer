@@ -3,6 +3,8 @@ extends Actor
 
 onready var stomp_area: Area2D = $StompArea2D
 onready var anim_player: AnimationPlayer = $AnimationPlayer
+onready var is_dead: bool
+onready var SAVE_KEY : String = name
 
 export var score: = 100
 	
@@ -28,5 +30,13 @@ func _on_StompArea2D_area_entered(area: Area2D) -> void:
 func die() -> void:
 	$EDie.playing = true
 	PlayerData.score += score
+	is_dead = false
 	queue_free()
-	
+
+func save(save_game : Resource):
+	save_game.data[SAVE_KEY] = is_dead
+	save_game.data[SAVE_KEY] = position
+
+func load(save_game : Resource):
+	is_dead = save_game.data[SAVE_KEY]
+	position = save_game.data[SAVE_KEY]

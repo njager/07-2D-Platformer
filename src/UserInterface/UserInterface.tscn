@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/UserInterface/UserInterface.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/UserInterface/RetryButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/UserInterface/SceneChangeButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/save/DebugInterface.tscn" type="PackedScene" id=9]
 
 [node name="UserInterface" type="Control"]
 pause_mode = 2
@@ -21,8 +22,12 @@ margin_left = -380.0
 margin_top = 50.0
 margin_right = -50.0
 margin_bottom = 150.0
+custom_colors/font_color = Color( 0.537255, 0.537255, 0.537255, 1 )
 text = "Score: %s"
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PauseOverlay" type="ColorRect" parent="."]
 visible = false
@@ -60,3 +65,7 @@ next_scene_path = "res://src/Screens/MainScreen.tscn"
 margin_top = 184.0
 margin_right = 274.0
 margin_bottom = 270.0
+
+[node name="DebugInterface" parent="PauseOverlay/PauseMenu" instance=ExtResource( 9 )]
+
+[editable path="PauseOverlay/PauseMenu/DebugInterface"]

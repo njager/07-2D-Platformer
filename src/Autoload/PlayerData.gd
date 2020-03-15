@@ -7,7 +7,7 @@ signal reset
 
 var score: = 0 setget set_score
 var deaths: = 0 setget set_deaths
-
+onready var SAVE_KEY : String = name
 
 
 func reset():
@@ -25,3 +25,10 @@ func set_score(new_score: int) -> void:
 func set_deaths(new_value: int) -> void:
 	deaths = new_value
 	emit_signal("died")
+
+func save(save_game : Resource):
+	save_game.data[SAVE_KEY] = score
+
+func load(save_game : Resource):
+	score = save_game.data[SAVE_KEY]
+

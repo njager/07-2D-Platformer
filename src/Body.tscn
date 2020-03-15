@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/kenney_platformercharacters/PNG/Adventurer/Limbs/body_front.png" type="Texture" id=1]
 [ext_resource path="res://assets/kenney_platformercharacters/PNG/Adventurer/Limbs/head.png" type="Texture" id=2]
@@ -8,6 +8,33 @@
 [ext_resource path="res://src/BodyAnimations.anim" type="Animation" id=6]
 [ext_resource path="res://src/jumpanim.tres" type="Animation" id=7]
 [ext_resource path="res://src/runanim.tres" type="Animation" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "cycle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="Body" type="Node2D"]
 
@@ -29,7 +56,8 @@ position = Vector2( -6.45276, 22.2261 )
 texture = ExtResource( 5 )
 
 [node name="LeftArm" type="Sprite" parent="Torso"]
-position = Vector2( -21.3177, 0.735077 )
+position = Vector2( -13.5324, 1.27198 )
+rotation = -0.367381
 texture = ExtResource( 3 )
 
 [node name="LeftHand" type="Sprite" parent="Torso/LeftArm"]
@@ -37,7 +65,8 @@ position = Vector2( 6.86559, 14.003 )
 texture = ExtResource( 4 )
 
 [node name="RightArm" type="Sprite" parent="Torso"]
-position = Vector2( 19.7167, 1.43394 )
+position = Vector2( 12.2, 2.23932 )
+rotation = 0.209851
 texture = ExtResource( 3 )
 flip_h = true
 
@@ -45,7 +74,8 @@ flip_h = true
 position = Vector2( -1.79242, 12.1885 )
 texture = ExtResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Anima" type="AnimationPlayer" parent="."]
+anims/cycle = SubResource( 1 )
 anims/idle = ExtResource( 6 )
 anims/jump = ExtResource( 7 )
 anims/run = ExtResource( 8 )

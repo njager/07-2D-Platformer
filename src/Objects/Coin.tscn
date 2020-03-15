@@ -92,9 +92,9 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 25.0
 angle_random = 0.5
-scale = 3.0
+scale = 5.0
 scale_random = 0.3
-color = Color( 0.933333, 0.945098, 0.423529, 1 )
+color = Color( 0.894118, 0.878431, 0.156863, 1 )
 
 [node name="Coin" type="Area2D"]
 monitorable = false
@@ -122,9 +122,9 @@ anims/picked = SubResource( 4 )
 [node name="CoinDust" type="Particles2D" parent="."]
 rotation = -1.5708
 emitting = false
-amount = 18
+amount = 25
 one_shot = true
-speed_scale = 5.0
+speed_scale = 4.0
 explosiveness = 0.62
 randomness = 0.18
 process_material = SubResource( 5 )
