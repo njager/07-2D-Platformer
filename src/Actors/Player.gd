@@ -1,8 +1,7 @@
 extends Actor
 
-
 export var stomp_impulse: = 600.0
-
+onready var anim_player = $Body/AnimationPlayer
 
 func _on_StompDetector_area_entered(area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
@@ -11,8 +10,9 @@ func _on_StompDetector_area_entered(area: Area2D) -> void:
 
 
 func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
+	$PDeathSound.playing = true
 	die()
-
+	
 
 func _physics_process(delta: float) -> void:
 	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
@@ -24,6 +24,13 @@ func _physics_process(delta: float) -> void:
 	)
 	if Input.is_action_just_pressed("jump"):
 		$JumpSound.playing = true
+	#find move direction for animation purposes
+	var move_direction = -int(Input.is_action_pressed("move_left")) + int(Input.is_action_pressed("move_right"))
+	if move_direction != 0:
+		$Body.scale.x = move_direction
+	
+	_assign_animation()
+	
 
 
 func get_direction() -> Vector2:
@@ -53,13 +60,21 @@ func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) ->
 	var stomp_jump: = -speed.y if Input.is_action_pressed("jump") else -stomp_impulse
 	return Vector2(linear_velocity.x, stomp_jump)
 
-
-func _jumpsound():
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		$JumpSound.playing = true
-	else:
-		pass
-
+func _assign_animation():
+	#define velocity for animation trigger
+	var direction: = get_direction()
+	var is_jump_interrupted: = Input.is_action_just_released("jump") and _velocity.y < 0.0
+	_velocity = calculate_move_velocity(_velocity, direction, speed, is_jump_interrupted)
+	#set animation plays
+	var anim = "idle"
+	
+	if not is_on_floor():
+		anim = "jump"
+	elif _velocity.x != 0:
+		anim = "run"
+		
+	if anim_player.assigned_animation != anim:
+		anim_player.play(anim)
 
 func die() -> void:
 	PlayerData.deaths += 1
