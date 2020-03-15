@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/background-elements-redux/Backgrounds/backgroundForest.png" type="Texture" id=1]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://src/Screens/EndScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Friends.ogg" type="AudioStream" id=9]
 
 [node name="Level02" type="Node2D"]
 
@@ -49,22 +50,263 @@ position = Vector2( 180, 480 )
 [node name="Camera2D" parent="Player" index="0"]
 limit_right = 6080
 
+[node name="Level2Music" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2( -180, -480 )
+stream = ExtResource( 9 )
+volume_db = -20.0
+autoplay = true
+
 [node name="Portal2D" parent="." instance=ExtResource( 5 )]
 position = Vector2( 4060, 80 )
 next_scene = ExtResource( 6 )
 
-[node name="Coins" type="Node2D" parent="." groups=[
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" groups=[
 "save",
-]]
+] instance=ExtResource( 7 )]
+position = Vector2( 346.158, 765.677 )
 
-[node name="Coin" parent="Coins" instance=ExtResource( 7 )]
-position = Vector2( 1250, 570 )
-
-[node name="Enemies" type="Node2D" parent="." groups=[
+[node name="Coin2" parent="Coins" groups=[
 "save",
-]]
+] instance=ExtResource( 7 )]
+position = Vector2( 1548.17, 667.839 )
 
-[node name="Enemy" parent="Enemies" instance=ExtResource( 8 )]
+[node name="Coin3" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 974, 150 )
+
+[node name="Coin4" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 1714.04, -151.026 )
+
+[node name="Coin5" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 341.739, -360.681 )
+
+[node name="Coin6" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 2976.62, -561.017 )
+
+[node name="Coin7" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 3628.88, -379.316 )
+
+[node name="Coin8" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 4267.16, -1059.53 )
+
+[node name="Coin9" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 1007.26, -1096.66 )
+
+[node name="Coin10" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 182.617, -1105.98 )
+
+[node name="Coin11" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 1156.34, -2028.46 )
+
+[node name="Coin12" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 1156.34, -2135.61 )
+
+[node name="Coin13" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 1155.61, -2252.09 )
+
+[node name="Coin14" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 5772.66, -956.892 )
+
+[node name="Coin15" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 4649.84, -313.953 )
+
+[node name="Coin16" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 3991, 283.903 )
+
+[node name="Coin17" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 4151.53, 283.275 )
+
+[node name="Coin18" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 3991, 405 )
+
+[node name="Coin19" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 4150.8, 404.372 )
+
+[node name="Coin20" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 4071.59, 343.806 )
+
+[node name="Coin21" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 5865.3, 902.883 )
+
+[node name="Coin22" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 5865.3, 614.026 )
+
+[node name="Coin23" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 4444.31, 814.363 )
+
+[node name="Coin24" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 3642.63, 185.915 )
+
+[node name="Coin25" parent="Coins" groups=[
+"save",
+] instance=ExtResource( 7 )]
+position = Vector2( 2244.94, 833.514 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
 position = Vector2( 1800, 950 )
+
+[node name="Enemy2" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 341.739, 945.341 )
+
+[node name="Enemy3" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 1809.32, 36.8397 )
+
+[node name="Enemy4" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 388.329, -177.473 )
+
+[node name="Enemy5" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 3598.37, -242.699 )
+
+[node name="Enemy6" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 2936.79, -242.699 )
+
+[node name="Enemy7" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 3640.3, 367.627 )
+
+[node name="Enemy8" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 3351.44, 945.341 )
+
+[node name="Enemy9" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 4651.3, 945.341 )
+
+[node name="Enemy10" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 4250.62, 950 )
+
+[node name="Enemy11" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 5298.9, 945.341 )
+
+[node name="Enemy12" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 5569.12, 945.341 )
+
+[node name="Enemy13" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 4898.22, 512.056 )
+
+[node name="Enemy14" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 4544.14, 510.728 )
+
+[node name="Enemy15" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 4194.72, 524.705 )
+
+[node name="Enemy16" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 4618.69, 30.853 )
+
+[node name="Enemy17" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 5028.68, 44.83 )
+
+[node name="Enemy18" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 5774.11, -761.174 )
+
+[node name="Enemy19" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 4758.45, -751.856 )
+
+[node name="Enemy20" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 4227.33, -737.879 )
+
+[node name="Enemy21" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 1250, -966.169 )
+
+[node name="Enemy22" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 569.789, -964.757 )
+
+[node name="Enemy23" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 848, -1575.08 )
+
+[node name="Enemy24" parent="Enemies" groups=[
+"save",
+] instance=ExtResource( 8 )]
+position = Vector2( 1495.6, -1584.4 )
 
 [editable path="Player"]

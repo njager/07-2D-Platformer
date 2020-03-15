@@ -6,6 +6,7 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var is_dead: bool
 onready var SAVE_KEY : String = name
 
+
 export var score: = 100
 	
 
@@ -35,8 +36,8 @@ func die() -> void:
 
 func save(save_game : Resource):
 	save_game.data[SAVE_KEY] = is_dead
-	save_game.data[SAVE_KEY] = position
+	
 
 func load(save_game : Resource):
 	is_dead = save_game.data[SAVE_KEY]
-	position = save_game.data[SAVE_KEY]
+	

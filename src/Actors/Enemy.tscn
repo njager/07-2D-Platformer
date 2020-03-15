@@ -25,10 +25,10 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 40, 34 )
+extents = Vector2( 35.5398, 28.4366 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 40, 10.5328 )
+extents = Vector2( 29.3926, 7.54521 )
 
 [sub_resource type="ParticlesMaterial" id=5]
 lifetime_randomness = 0.2
@@ -64,7 +64,7 @@ autoplay = "Spin"
 anims/Spin = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -34 )
+position = Vector2( 0.323532, -37.8824 )
 shape = SubResource( 3 )
 
 [node name="StompArea2D" type="Area2D" parent="."]
@@ -72,12 +72,12 @@ position = Vector2( 0, -66.4549 )
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea2D"]
-position = Vector2( 0, -4.93669 )
+position = Vector2( -0.647064, -2.67197 )
 shape = SubResource( 4 )
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-position = Vector2( 0.361233, -33 )
-scale = Vector2( 0.725457, 1 )
+position = Vector2( 0.675377, -38.6618 )
+scale = Vector2( 0.60099, 0.828429 )
 rect = Rect2( -50, -33, 100, 66 )
 process_parent = true
 physics_process_parent = true
