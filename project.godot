@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="2D Platformer"
 run/main_scene="res://src/Screens/MainScreen.tscn"
-config/icon="res://assets/icon.png"
+config/icon="res://assets/kenney_platformercharacters/PNG/Adventurer/Poses/adventurer_action1.png"
 config/Version="0.1.0"
 
 [autoload]
